@@ -43,16 +43,14 @@
 
     <header>
       <div class="container">
-        <a href="#" class="logo"><span>H</span>ealthy<span>M</span>inds</a>
+        <a href="#" class="logo"><span>A</span>rtifical <span>ASME</span></a>
 
         <nav class="nav">
           <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#scentence-checker">Scentence Checker</a></li>
-            <li><a href="#covid-19-test">Covid-19 Test</a></li>
+            <li><a href="#about">More Details</a></li>
+            <li><a href="#scentence-checker">Check Storms</a></li>
             <li><a href="#contact">Contact us</a></li>
-            <li><a href="#review">Reviews</a></li>
           </ul>
         </nav>
 
@@ -68,12 +66,12 @@
       <div class="container">
         <div class="row min-vh-100 align-items-center text-center text-md-left">
           <div class="col-md-6 pr-md-5" data-aos="zoom-in">
-            <img src="../static/source/home.svg" width="100%" alt="" />
+            <img src="static\source\Earth.png" width="100%" alt="" />
           </div>
           <div class="col-md-6 pl-md-5 content" data-aos="fade-left">
-            <h1><span>stay</span> safe, <span>stay</span> healthy.</h1>
-            <h3>caring for you.</h3>
-            <a href="#about"><button class="button">learn more</button></a>
+            <h1><span>stay</span> safe,
+            <h3>away from geomagnatic storm </h3>
+            <a href="#about"><button type="button"  class="btn btn-primary btn-lg button1">learn more</button></a>
           </div>
         </div>
       </div>
@@ -85,27 +83,32 @@
 
     <section class="about" id="about">
       <div class="container">
-        <div class="row min-vh-100 align-items-center">
+        <div class="row min-vh-100 align-items-center"> 
           <div class="col-md-6 content" data-aos="fade-right">
             <div class="box">
-              <h3><i class="fa-solid fa-pen-nib"></i> Sentence checker</h3>
+              <h3><i class="fa-solid fa-user-astronaut"></i></i> What's Geomagnatic Storm</h3>
               <p>
-                The sentence checker simply grades your scentence on 5 different
-                scales according to how harsh or polite the context is.
+                A geomagnetic storm is a major disturbance of Earth's magnetosphere that occurs when there is a 
+                very efficient exchange of energy from the solar wind into the space environment surrounding Earth.
               </p>
             </div>
 
             <div class="box">
-              <h3><i class="fas fa-virus-covid"></i> Covid-19 Test</h3>
+              <h3> <i class="fa-solid fa-rocket"></i></i>Why it's Danger</h3>
               <p>
-                The Covid-19 Test scans an x-ray image of the lungs and
-                determines whether positive or negative.
+                Geomagnatic storms make it diffcult or impossible and global-positioning system (GPS) communications can be degraded.
               </p>
+              <p>
+                satellite electronics can be damaged through the build up and discharge of static-electric charges.
+                Astronauts and high altitude pilots can be subjected to increased levels of radiation.</p>
+                <p>
+                  they make high voltage surges in power grids that can make breakouts.
+                </p>
             </div>
           </div>
 
           <div class="col-md-6 d-none d-md-block" data-aos="fade-left">
-            <img src="../static/source/engineer.svg" width="100%" alt="" />
+            <img src="../static/source/astronaut.png" width="100%" alt="" />
           </div>
         </div>
       </div>
@@ -113,39 +116,8 @@
 
     <!-- about section ends -->
 
-    <!-- review section starts  -->
+   
 
-    <section class="review" id="review">
-      <div class="container">
-        <h1 class="heading"><span>'</span> people's review <span>'</span></h1>
-
-        <div class="box-container">
-          <div class="box" data-aos="fade-right">
-            <p>
-              " It was a very helpful website. My english is a bit weak and I
-              got to test a scentence my coworker said it me and it classified
-              it correctly"
-            </p>
-            <h3>Alexa Micheal</h3>
-            <span>jan 5, 2021</span>
-            <img src="../static/source/girl.png" alt="" />
-          </div>
-
-          <div class="box" data-aos="fade-left">
-            <p>
-              "This website helped me to diagnose myself early of covid-19 as I
-              did not show any early symptomps but then i took the test and
-              turned positive"
-            </p>
-            <h3>Bruce Wayne</h3>
-            <span>jan 10, 2021</span>
-            <img src="../static/source/batman.png" alt="" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- review section ends  -->
 
     <!-- contact section starts  -->
 
@@ -153,23 +125,17 @@
       <div class="container min-vh-100">
         <div class="row justify-content-center">
           <h1 class="heading">
-            <span>'</span> Sentence Checker <span>'</span>
+            <span>'</span> There is any Storm today? <span>'</span>
           </h1>
           <div class="col-md-10" data-aos="flip-down">
             <form id="upload-file" method="post" enctype="multipart/form-data">
-              <textarea
-                name="text"
-                id="text"
-                cols="15"
-                rows="8"
-                placeholder="enter your text"
-              ></textarea>
+             
               <button
                 type="button"
                 class="btn btn-primary btn-lg button1"
                 id="ClassifierPredict"
               >
-                Predict
+                See Today Prediction
               </button>
             </form>
           </div>
@@ -179,48 +145,16 @@
       </div>
     </section>
 
-    <section class="contact" id="covid-19-test">
-      <div class="container min-vh-100">
-        <div class="row justify-content-center">
-          <h1 class="heading"><span>'</span> Covid-19 Test <span>'</span></h1>
-
-          <div class="col-md-10" data-aos="flip-down">
-            <form id="upload-image" method="post" enctype="multipart/form-data">
-              <label for="imageUpload" class="upload-label">
-                Upload image
-              </label>
-              <input
-                type="file"
-                name="file"
-                id="imageUpload"
-                accept=".png, .jpg, .jpeg"
-              />
-            </form>
-            <div class="image-section" style="display: none">
-              <div class="img-preview">
-                <div id="imagePreview"></div>
-              </div>
-              <div>
-                <button type="button" class="button1" id="ImageButton">
-                  Predict!
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="loader" style="display: none"></div>
-          <h1 class="heading" id="imageResults"><span></span><span></span></h1>
-        </div>
-      </div>
-    </section>
     <section class="footer" id="contact">
       <div class="container">
         <div class="row">
           <div class="col-md-4" data-aos="fade-right">
-            <a href="#" class="logo"><span>H</span>ealthy<span>M</span>inds</a>
+            <a href="#" class="logo"
+              ><span>A</span>rtifical <span>ASME</span></a
+            >
             <p>
               In our website, we apply the principles of statistics and
-              probability plus machine learning on real life applictaions for a
-              better visulaization of real matter
+              probability plus machine learning on Nasa Datasets for better life
             </p>
           </div>
 
@@ -228,24 +162,20 @@
             <h3>links</h3>
             <a href="#home">home</a>
             <a href="#about">about</a>
-            <a href="#scentence-checker">Scentence Checker</a>
-            <a href="#covid-19-test">Covid-19 Test</a>
-            <a href="#review">Reviews</a>
+            <a href="#scentence-checker">Check Storms</a>
           </div>
 
           <div class="col-md-4 text-center" data-aos="fade-left">
             <h3>share</h3>
-            <a href="https://web.facebook.com/Healthy-Minds-108809155166082"
-              >facebook</a
-            >
-            <a href="https://www.instagram.com/healthy__minds.cu/">instagram</a>
+            <a href="#">facebook</a>
+            <a href="#">instagram</a>
             <a href="#">Github</a>
           </div>
         </div>
       </div>
 
       <h1 class="credit text-center mx-auto">
-        created by four engineers aspiring to make a change
+        created by Three engineers aspiring to make a change
       </h1>
     </section>
 

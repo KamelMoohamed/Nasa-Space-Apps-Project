@@ -21,21 +21,19 @@ $(document).ready(function () {
 
   // Predict
   $("#ClassifierPredict").click(function () {
-    var form_data = new FormData($("#upload-file")[0]);
-    $(".loader").show();
     // Make prediction by calling api /predict
     $.ajax({
-      type: "POST",
-      url: "/sentiment_prediction",
-      data: form_data,
+      type: "GET",
+      url: "/Prediction",
       contentType: false,
       cache: false,
       processData: false,
       async: true,
       success: function (data) {
         // Get and display the result
+        var data_graph = data["Data"];
         $("#result").fadeIn(600);
-        $("#SenResults").text(data);
+        $("#SenResults").text(data["Label"]);
         console.log("Success!");
       },
     });

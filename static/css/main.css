@@ -52,7 +52,7 @@ section {
   margin: 1rem 0;
 }
 
-.button::before {
+/* .button::before {
   content: "";
   position: absolute;
   top: -100%;
@@ -62,15 +62,15 @@ section {
   background-color: var(--black);
   z-index: -1;
   transition: 0.2s linear;
-}
+} */
 
-.button:hover:before {
+/* .button:hover:before {
   top: 0%;
-}
+} */
 
-.button:hover {
+/* .button:hover {
   box-shadow: 0.1rem 0.5rem var(--blue), 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
-}
+} */
 
 .button1 {
   height: 3.5rem;
@@ -87,7 +87,7 @@ section {
   margin: 1rem 0;
 }
 
-.button1::before {
+/* .button1::before {
   content: "";
   position: absolute;
   top: -100%;
@@ -97,15 +97,15 @@ section {
   background-color: var(--brightblue);
   z-index: -1;
   transition: 0.2s linear;
-}
+} */
 
-.button1:hover:before {
+/* .button1:hover:before {
   top: 0%;
 }
 
 .button1:hover {
   box-shadow: 0.1rem 0.5rem var(--blue), 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
-}
+} */
 .heading {
   text-align: center;
   font-size: 4rem;
@@ -714,6 +714,12 @@ label:hover {
   width: 50%;
 }
 .button1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.button {
   display: block;
   margin-left: auto;
   margin-right: auto;
