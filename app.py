@@ -1,13 +1,15 @@
+import atexit
 from flask import Flask, render_template, Response
 from data_predication import DataPredication
+from data_generator import DataGenerator
+from apscheduler.schedulers.background import BackgroundScheduler
 
-# Flask APP
+
 app = Flask(__name__, template_folder="templetes")
 
 
 @app.route('/', methods=['GET'])
 def index():
-    # Main page
     return render_template('homeclass.html')
 
 
@@ -17,14 +19,22 @@ def predict():
         d = DataPredication()
         data = d.predict()
         return Response({
-            "label":data[0],
-            "values":data[1]
+            "Label": data[0],
+            "Data": data[1]
         },
         status=404)
-
     except:
         return Response(status=404)
 
 
+def update_data():
+    scheduler = BackgroundScheduler()
+    generator = DataGenerator()
+    scheduler.add_job(func=generator.generate, trigger="interval", seconds = 60*5)
+    scheduler.start()
+    atexit.register(lambda: scheduler.shutdown())
+
+
 if __name__ == '__main__':
+    update_data()
     app.run(debug=True)
