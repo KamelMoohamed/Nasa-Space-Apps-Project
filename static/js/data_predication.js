@@ -21,7 +21,7 @@ $(document).ready(function () {
 
   // Predict
   $("#ClassifierPredict").click(function () {
-    // Make prediction by calling api /predict
+    // Make prediction by calling api /predication
     $.ajax({
       type: "GET",
       url: "/predication",
@@ -31,10 +31,9 @@ $(document).ready(function () {
       async: true,
       success: function (data) {
         // Get and display the result
-        var data_graph = data["Data"];
         $("#result").fadeIn(600);
-        $("#SenResults").text(data["Label"]);
-        console.log("Success!");
+        $("#SenResults").text(data)
+        console.log(data);
       },
     });
   });

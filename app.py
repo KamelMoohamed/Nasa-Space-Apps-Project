@@ -1,6 +1,6 @@
 import os
 import atexit
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 from data_predication import DataPredication
 from data_generator import DataGenerator
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -14,18 +14,12 @@ def index():
     return render_template('homeclass.html')
 
 
-@app.route('/prediction', methods=['GET', 'POST'])
+@app.route('/predication', methods=['POST', 'GET'])
 def predict():
-    try:
-        d = DataPredication()
-        data = d.predict()
-        return Response({
-            "Label": data[0],
-            "Data": data[1]
-        },
-        status=404)
-    except:
-        return Response(status=404)
+    d = DataPredication()
+    data = d.predict()
+    return data[0]
+
 
 
 def update_data():
@@ -37,5 +31,5 @@ def update_data():
 
 
 if __name__ == '__main__':
-    update_data()
+    # update_data()
     app.run(debug=True)
