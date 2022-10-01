@@ -7,23 +7,24 @@ from keras.models import load_model
 
 class DataPredication:
     def __init__(self):
+        self.mainPath = os.path.dirname(os.path.realpath(__file__))
         self.path = self.get_last_path()
         df = pd.read_csv(self.path)
         self.X = df[['BGSM1', 'BGSM2', 'BGSM3', 'BGSE1', 'BGSE2', 'BGSE3']]
-        self.X = np.array(self.X).reshape((self.X.shape[0],self.X.shape[1],1))
+        self.X = np.array(self.X).reshape((self.X.shape[0], self.X.shape[1],1))
         self.prediction_model = load_model("predication_model.h5")
 
     def get_last_path(self):
-        path = "/content/drive/MyDrive/Nasa_Space_Apps/CSV/*.csv"
+        path = os.path.join(self.mainPath, "uploads/CSV/*.csv")
         my_list = []
         for fName in glob.glob(path):
             my_list.append(os.path.basename(fName)[10:18])
         lastDate = max(my_list)
-        return ('uploads/wi_h2_mfi_' + lastDate + '.csv')
+        return ('uploads/CSV/wi_h2_mfi_' + lastDate + '.csv')
 
     def predict(self):
         self.y = self.prediction_model.predict(self.X)
-        output = np.array(np.argmax(self.y)).max()
+        output = np.array(np.argmax(self.y, axis=1)).max()
         return [self.convertToString(output), np.argmax(self.y)]
 
     def convertToString(self, modelOutput):

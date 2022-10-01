@@ -1,3 +1,4 @@
+import os
 import atexit
 from flask import Flask, render_template, Response
 from data_predication import DataPredication
@@ -30,7 +31,7 @@ def predict():
 def update_data():
     scheduler = BackgroundScheduler()
     generator = DataGenerator()
-    scheduler.add_job(func=generator.generate, trigger="interval", seconds = 60*5)
+    scheduler.add_job(func=generator.generate, trigger="interval", days=1)
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown())
 

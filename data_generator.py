@@ -30,7 +30,7 @@ class DataGenerator:
         return timestamp
 
     def data_processing(self, path):
-        cdf = cdflib.cdf_to_xarray(r"C://Users/kamel/Documents/GitHub/Nasa-Space-Apps-Project/uploads/Downloads/" + path + ".cdf",
+        cdf = cdflib.cdf_to_xarray(os.path.join(self.mainPath, ("uploads/Downloads" + path + ".cdf")),
                                    to_datetime=True)
         df = pd.DataFrame({
             "BGSM1": [], "BGSM2": [], "BGSM3": [],
@@ -57,7 +57,6 @@ class DataGenerator:
                     "BGSE1": [lst[3].item(0) / counter], "BGSE2": [lst[4].item(0) / counter], "BGSE3": [lst[5].item(0) / counter],
                     "Range": [round(lst[6].item(0) / counter)],"Label": 0
                 }
-
                 df_dummy = pd.DataFrame(dic)
                 df = pd.concat([df, df_dummy])
                 startIndex = i
@@ -65,13 +64,14 @@ class DataGenerator:
                 counter = 0
         df = df.reset_index()
         df = df.drop(['index'], axis=1)
-        df.to_csv("/uploads/CSV/{path}.csv".format(path=path))
-        os.remove("/uploads/Downloads/" + path + ".cdf")
+        df.to_csv(os.path.join(self.mainPath, "uploads/CSV/{path}.csv".format(path=path)))
+        os.remove(os.path.join(self.mainPath, ("uploads/Downloads" + path + ".cdf")))
 
     def generate(self):
-        self.generalPath = r"C:\Users\kamel\Documents\GitHub\Nasa-Space-Apps-Project\uploads\CSV\*.csv"
+        self.mainPath = os.path.dirname(os.path.realpath(__file__))
+        generalPath = os.path.join(self.mainPath, "uploads/CSV/*.csv")
         my_list = []
-        for fname in glob.glob(self.generalPath):
+        for fname in glob.glob(generalPath):
             my_list.append(os.path.basename(fname)[10:18])
         self.lastDate = max(my_list)
         general = 'wi_h2_mfi_'
@@ -93,6 +93,11 @@ class DataGenerator:
                 v -= 1
             path = "/{general}{date}_v{version}".format(
                 general=general, date=self.date_to_string(date), version=version)
-            if response.status_code ==  200:
-                open(r"C://Users/kamel/Documents/GitHub/Nasa-Space-Apps-Project/uploads/Downloads/" + path + ".cdf", "wb").write(response.content)
+            if response.status_code == 200:
+                string = os.path.join(self.mainPath, ("uploads/Downloads" + path + ".cdf"))
+
+                print(string)
+                open(string, "wb").write(response.content)
+                print("################10")
                 self.data_processing(path)
+                print("################11")
